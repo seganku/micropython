@@ -6,7 +6,7 @@
 from sht20 import sht20
 from machine import Timer
 
-sht = sht20(scl=19, sda=21, freq=400000, timeout=255, resolution=12)
+sht = sht20(scl=19, sda=21, freq=400000, timeout=255, resolution=14)
 
 def poll():
     print("%.02f°C/%.02f%% humidity" % ( sht.temperature, sht.relative_humidity ))
