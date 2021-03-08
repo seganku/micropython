@@ -10,6 +10,12 @@ Reference material:
     https://www.sensirion.com/fileadmin/user_upload/customers/sensirion/Dokumente/2_Humidity_Sensors/Software/Sensirion_Humidity_Sensors_Software_SHT21_Sample_Code_C-file.zip
     https://www.sensirion.com/fileadmin/user_upload/customers/sensirion/Dokumente/2_Humidity_Sensors/Datasheets/Sensirion_Humidity_Sensors_SHT20_Datasheet.pdf
     http://www.embeddedadventures.com/datasheets/Sensirion_Humidity_SHT2x_CRC_Calculation_V1.pdf
+
+Also compatible, is the HTU21D(F) RH/T SENSOR IC:
+    https://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&DocId=Data+Sheet%7FHPC199_6%7FA6%7Fpdf%7FEnglish%7FENG_DS_HPC199_6_A6.pdf%7FCAT-HSC0004
+
+See also, a (probably better) asyncio implementation by peterhinch:
+    https://github.com/peterhinch/micropython-async/blob/master/v3/as_drivers/htu21d/htu21d_mc.py
 """
 
 from time import sleep_ms
@@ -108,12 +114,12 @@ class sht20(object):
 
     @property
     def temperature(self):
-        'Return the temperature as a Celcius float.'
+        'Return the temperature as a Celsius float.'
         temperature = self._get_data_no_hold(
                 self.TRIGGER_T_MEASUREMENT_NO_HOLD,
                 self.resv['tms'])
-        celcius = temperature * 175.72 / 65536 - 46.85
-        return celcius
+        celsius = temperature * 175.72 / 65536 - 46.85
+        return celsius
 
     @temperature.setter
     def temperature(self, value):
